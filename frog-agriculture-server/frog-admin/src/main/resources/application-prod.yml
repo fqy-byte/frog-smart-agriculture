@@ -8,8 +8,8 @@ ruoyi:
   copyrightYear: 2021
   # 实例演示开关
   demoEnabled: true
-  # 文件路径，以uploadPath结尾 示例（ Windows配置 D:/uploadPath，Linux配置 /uploadPath, Mac /Users/xxx）
-  profile: /Users/junqiao/projectCode/uploadPath
+  # 文件路径，以uploadPath结尾 示例（ Windows配置 D:/uploadPath，Linux配置 /uploadPath）
+  profile: /uploadPath
   # 获取ip地址开关
   addressEnabled: true
   # 验证码类型 math 数组计算 char 字符验证
@@ -36,7 +36,7 @@ logging:
     com.frog.iot: warn
     com.frog.agriculture: warn
     org.springframework: warn
-    com.frog.sip: warn
+    com.frog.sip: info
 
 # Spring配置
 spring:
@@ -51,7 +51,7 @@ spring:
     druid:
       # 主库数据源
       master:
-        url: jdbc:mysql://localhost:3306/frog_agriculture_os?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        url: jdbc:mysql://177.7.0.11:3306/frog_agriculture_os?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
         username: root
         password: frog
       # 从库数据源
@@ -126,7 +126,7 @@ spring:
   # redis 配置
   redis:
     # 地址
-    host: localhost
+    host: 177.7.0.10
     # 端口，默认为6379
     port: 6379
     # 数据库索引
@@ -149,7 +149,7 @@ spring:
   mqtt:
     username: frog                      # 账号
     password: frog                      # 密码
-    host-url: tcp://localhost:1883            # mqtt连接tcp地址
+    host-url: tcp://177.7.0.12:1883            # mqtt连接tcp地址
     client-id: ${random.int}                   # 客户端Id，不能相同，采用随机数 ${random.value}
     default-topic: test                        # 默认主题
     timeout: 30                                # 超时时间
@@ -206,8 +206,8 @@ xss:
 
 # sip 配置
 sip:
-  enabled: false                    # 是否启用视频监控SIP，true为启用
-  ip: 192.168.3.237                 # 本地运行为局域网IP地址，部署公网为公网IP地址
+  enabled: true                    # 是否启用视频监控SIP，true为启用
+  ip: 177.7.0.13                    # 本地运行为局域网IP地址，部署公网为公网IP地址,如果是docker部署就写容器的IP地址
   port: 5061                        # SIP端口(保持默认)
   domain: 3402000000                # 由省级、市级、区级、基层编号组成，参照GB/T 2260-2007，(可保持默认)
   id: 34020000002000000001          # 同上，另外增加编号，(可保持默认)
